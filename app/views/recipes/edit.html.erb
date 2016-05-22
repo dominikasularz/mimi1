@@ -1,2 +1,17 @@
-<h1>Recipes#edit</h1>
-<p>Find me in app/views/recipes/edit.html.erb</p>
+<% if @recipe.errors.any? %>
+  <div id="error_explanation">
+    <h2> Znaleziono <%= @recipe.errors.count %> błąd</h2>
+    <ul>
+    <% @recipe.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for(@recipe) do |form| %>
+  <p><%= form.label("food") %></p>
+  <p><%= form.text_field("food") %></p>
+  <p><%= form.label("description") %></p>
+  <p><%= form.text_area("description") %></p>
+  <p><%= form.submit %></p>
+<% end %>

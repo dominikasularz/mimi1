@@ -1,3 +1,14 @@
+
+<% if @recipe && @recipe.errors.any? %>
+  <div id="error_explanation">
+    <h2> Znaleziono <%= @recipe.errors.count %> błąd </h2>
+    <ul>
+    <% @recipe.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_for(Recipe.new) do |form| %>
   <p><%= form.label("food") %></p>
   <p><%= form.text_field("food") %></p>

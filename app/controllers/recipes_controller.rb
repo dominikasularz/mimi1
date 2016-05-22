@@ -15,17 +15,29 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @recipe = Recipe.find(params[:id])
   end
   
   def new #strona z formularzem wysyłane do create i tworzone w bazie danych
   end
   
-  def create
-    entry = Recipe.create(recipe_params)
-    redirect_to(recipes_path)
+  def update
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(recipe_params)
+    if @recipe.valid?
+      redirect_to(recipes_path)
+    else
+      render :edit 
+    end
   end
   
-  def update
+  def create
+    @recipe=Recipe.create(recipe_params)
+    if @recipe.valid?
+      redirect_to(recipes_path)
+    else
+      render :new 
+    end
   end
   
   def recipe_params
