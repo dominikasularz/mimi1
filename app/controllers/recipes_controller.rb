@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   def index
-    @recipe = [
+    @recipes = [
       Recipe.new(food: "Curry", date: Date.new, description: "indyjskie"),
       Recipe.new(food: "Sajgonki", date: Date.new, description: "chińskie"),
       Recipe.new(food: "Tomka", date: Date.new, description: "tajskie")
