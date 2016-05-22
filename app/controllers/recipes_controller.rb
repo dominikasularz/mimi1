@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
   def edit
   end
   
-  def new
+  def new #strona z formularzem wysyłane do create i tworzone w bazie danych
   end
   
   def create
