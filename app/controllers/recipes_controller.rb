@@ -1,16 +1,17 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = [
-      Recipe.new(food: "Curry", date: Date.new, description: "indyjskie"),
-      Recipe.new(food: "Sajgonki", date: Date.new, description: "chińskie"),
-      Recipe.new(food: "Tomka", date: Date.new, description: "tajskie")
-    ]
+    @recipes = Recipe.all
   end
 
   def show
+    @recipe = Recipe.find(params[:id])
   end
 
-  def delete
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to(recipes_path)
+    
   end
 
   def edit
@@ -20,9 +21,15 @@ class RecipesController < ApplicationController
   end
   
   def create
+    entry = Recipe.create(recipe_params)
+    redirect_to(recipes_path)
   end
   
   def update
+  end
+  
+  def recipe_params
+    params.require(:recipe).permit(:food, :date, :description)
   end
   
 end

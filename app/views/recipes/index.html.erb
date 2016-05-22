@@ -1,5 +1,6 @@
 <ul>  
 <% for recipe in @recipes  %>
-<li> <%=recipe.food %> </li>
+<li> <%= link_to(recipe.food, recipe_path(recipe)) %>
+<%= link_to("Usuń",  recipe_path(recipe), method: :delete) %> </li>
 <% end %>
 </ul>
